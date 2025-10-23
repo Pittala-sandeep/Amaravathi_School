@@ -14,6 +14,21 @@ const notice = require('./routes/notice');
 
 const app = express();
 
+
+const path = require("path");
+const { fileURLToPath } =  require("url");
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve the built frontend
+app.use(express.static(path.join(__dirname, "../FRONTEND/dist")));
+
+// Handle any unknown routes by serving index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../FRONTEND/dist/index.html"));
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

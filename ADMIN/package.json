@@ -1,10 +1,13 @@
 {
   "scripts": {
-    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
-    "start-backend": "cd BACKEND && nodemon app.js",
-    "start-frontend": "cd FRONTEND && npm start"
+    "build": "cd FRONTEND && npm install && npm run build",
+    "start": "cd BACKEND && npm install && node app.js"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.10",
+    "vite": "^7.1.12"
   }
 }
