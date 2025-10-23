@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: [process.env.FRONTEND_ORIGIN, process.env.ADMIN_FRONTEND_ORIGIN || ""].filter(Boolean),
+  origin: [process.env.FRONTEND_ORIGIN],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
