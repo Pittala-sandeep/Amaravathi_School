@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { GalleryEditDelete } from "./galleryED"
-import { useNavigate } from "react-router-dom";
 
-const GalleryUpload = () => {
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    category: ''
-  });
+const GalleryEdit = () => {
+  const location = useLocation();
+  const Data = location.state?.galleryData;
+  const [formData, setFormData] = useState(Data);
   const [images, setImages] = useState([]);
   const [uploading, setUploading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [data, setData] = useState([]);
   const [previewUrls, setPreviewUrls] = useState([]);
   const navigate = useNavigate();
 
@@ -51,7 +46,7 @@ const GalleryUpload = () => {
     setUploading(true)
 
     try {
-      const res = await axios.post('http://localhost:5000/gallery', data, {
+      const res = await axios.put(`http://localhost:5000/gallery/edit/${formData._id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -61,34 +56,18 @@ const GalleryUpload = () => {
       setFormData({ title: '', description: '', category: '' });
       setImages([]);
       setUploading(false)
-      setMessage("Data uploaded")
-      navigate('/gallery')
+      navigate('/galleryupload')
     } catch (err) {
       console.error(err);
     }
   };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/gallery")
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-lg">
         <h2 className="text-2xl font-bold mb-6 text-center text-blue-700">
-          Upload Gallery Images
+          Edit Gallery Images and content
         </h2>
-
-        {message && (
-            <p className="text-center mt-4 font-semibold text-green-600">
-              {message}
-            </p>
-        )}
 
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div className="mb-4">
@@ -133,7 +112,7 @@ const GalleryUpload = () => {
 
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Upload Images max-4 <span className="text-red-500">*</span>
+              Upload Images max-4
             </label>
             <input
               type="file"
@@ -142,7 +121,6 @@ const GalleryUpload = () => {
               accept="image/*"
               name="image"
               multiple
-              required
             />
           </div>
           <div className="flex flex-wrap gap-4">
@@ -178,61 +156,8 @@ const GalleryUpload = () => {
           </button>
         </form>
       </div>
-
-      <h1 className="text-3xl font-bold mb-6 text-center text-blue-800 mt-5">
-        Delete Or Edit
-      </h1>
-
-      {/* to show all gallery list and can edit or delete  */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-5">
-        {data.map((item) => (
-          <div
-            key={item._id}
-            className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition duration-300 flex flex-col"
-          >
-            <div
-              className={`grid gap-2 ${
-                item.images.length === 1
-                  ? "grid-cols-1"
-                  : item.images.length === 2
-                  ? "grid-cols-2"
-                  : item.images.length === 3
-                  ? "grid-cols-3"
-                  : "grid-cols-4"
-              }`}
-            >
-              {item.images.map((img, index) => (
-                <img
-                  key={index}
-                  src={img.url}
-                  alt={`${item.title}-${index}`}
-                  className="mx-auto w-full max-h-48 object-cover rounded-md transition-transform duration-300 hover:scale-105"
-                />
-              ))}
-            </div>
-            <div className="p-3 flex-1 flex flex-col">
-              <h5 className="text-lg font-semibold text-blue-700">
-                {item.title}
-              </h5>
-              <p className="text-sm text-gray-600 line-clamp-2">
-                {item.description}
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
-                Category:{" "}
-                <span className="italic">{item.category || "N/A"}</span>
-              </p>
-            </div>
-            <GalleryEditDelete item={item} setData={setData} />
-          </div>
-        ))}
-        {data.length === 0 && (
-          <p className="text-center text-gray-600 col-span-full">
-            No gallery items found.
-          </p>
-        )}
-      </div>
     </div>
   );
 };
 
-export default GalleryUpload;
+export default GalleryEdit;

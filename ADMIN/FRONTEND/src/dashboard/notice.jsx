@@ -39,7 +39,7 @@ const NoticeUpload = () => {
 
       setMessage("Notice posted successfully!");
       setFormData({ title: "", content: "", category: "" }); 
-      navigate("/notices")
+      navigate("/noticeupload")
     } catch (error) {
       console.error(error);
       setMessage("Failed to post notice.");

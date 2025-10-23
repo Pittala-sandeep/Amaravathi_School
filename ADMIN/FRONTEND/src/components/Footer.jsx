@@ -43,20 +43,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-5 w-5 text-yellow-500" />
-                <span className="text-gray-300">12-11-146 Namalagundu, Sethaphalmandi, Secunderabad 500061</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-5 w-5 text-yellow-500" />
-                <span className="text-gray-300">12-10-822 medibavi,
-                  Sethaphalmandi, Secunderabad 500061</span>
+                <span className="text-gray-300">123 Education Street, Learning City, LC 12345</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-yellow-500" />
-                <span className="text-gray-300">+91 9052454540</span>
+                <span className="text-gray-300">+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-5 w-5 text-yellow-500" />
-                <span className="text-gray-300">amaravathigrammar1982@gmail.com</span>
+                <span className="text-gray-300">info@Amaravathi.edu</span>
               </div>
             </div>
           </div>

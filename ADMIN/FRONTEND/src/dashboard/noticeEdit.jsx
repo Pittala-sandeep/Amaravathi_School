@@ -44,7 +44,7 @@ const NoticeEdit = () => {
       setMessage("Failed to post notice.");
     } finally {
       setLoading(false);
-      navigate('/notices')
+      navigate('/noticeupload')
     }
   };
 

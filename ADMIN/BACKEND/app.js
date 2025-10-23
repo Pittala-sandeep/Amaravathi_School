@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: process.env.FRONTEND_ORIGIN,
+  origin: [process.env.FRONTEND_ORIGIN, process.env.ADMIN_FRONTEND_ORIGIN],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
@@ -47,12 +47,22 @@ main().catch(err => console.log(err));
 
 async function main() {
   await mongoose.connect(process.env.MONGO_URL);
-  console.log("DB connected")
+  console.log("DataBase connected successfully")
 }
 
 app.use("/carousel", carousel);
 app.use("/gallery", gallery);
 app.use("/notice", notice);
+
+app.get("/register-admin", async (req, res) => {
+  try {
+    const admin = new Admin({ username: "sandeep" });
+    await Admin.register(admin, "AmaravathiSchool"); 
+    res.send("Admin created successfully!");
+  } catch (err) {
+    res.send(err);
+  }
+});
 
 app.get("/isauth", (req, res) => {
   if (req.isAuthenticated()) {
@@ -84,5 +94,5 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(5000, () => {
-  console.log("Server Started")
+  console.log("Server Started at port 5000")
 })

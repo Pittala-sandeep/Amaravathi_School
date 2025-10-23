@@ -1,3 +1,4 @@
+require("dotenv").config({path:"../.env"})
 const mongoose = require('mongoose');
 const Carousel = require('../models/carousel');
 const Gallery = require('../models/gallery');
@@ -10,8 +11,7 @@ const notice = require('./notice')
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/amaravathiSchool');
-  console.log("connected successfully")
+  await mongoose.connect(process.env.MONGO_URL)
 }
 
 const carouselData = async () => {

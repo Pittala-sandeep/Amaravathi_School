@@ -34,10 +34,7 @@ const CarouselUpload = () => {
       setuploading(false);
       setMessage("Image uploaded successfully!");
       setImage(null);
-
-      setTimeout(() => {
-        navigate("/");
-      }, 1500);
+      navigate("/");
     } catch (err) {
       console.error(err);
       setuploading(false);
@@ -73,6 +70,7 @@ const CarouselUpload = () => {
               accept="image/*"
               required
             />
+            <p className="text-red-500 py-2">Max size of 9 MB *</p>
           </div>
 
           <button

@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
-import toast from "react-hot-toast";
+import React from "react";
+import { MapPin, Phone, Mail, Clock,} from "lucide-react";
 
 const Contact = () => {
   return (
@@ -50,11 +48,24 @@ const Contact = () => {
                       Address
                     </h3>
                     <p className="text-gray-600">
-                      123 Education Street
+                      12-11-146
                       <br />
-                      Learning City, LC 12345
+                      Namalagundu, Sethaphalmandi
                       <br />
-                      United States
+                      Secunderabad 500061
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      Alternate Address
+                    </h3>
+                    <p className="text-gray-600">
+                      12-10-822
+                      <br />
+                      medibavi, Sethaphalmandi
+                      <br />
+                      Secunderabad 500061
                     </p>
                   </div>
                 </div>
@@ -70,10 +81,10 @@ const Contact = () => {
                     <p className="text-gray-600">
                       Main Office:{" "}
                       <a
-                        href="tel:+15551234567"
+                        href="tel:+919052454540"
                         className="text-blue-600 hover:underline"
                       >
-                        +1 (555) 123-4567
+                        +91 9052454540
                       </a>
                       <br />
                       Admissions:{" "}
@@ -82,14 +93,6 @@ const Contact = () => {
                         className="text-blue-600 hover:underline"
                       >
                         +1 (555) 123-4568
-                      </a>
-                      <br />
-                      Emergency:{" "}
-                      <a
-                        href="tel:+15551234569"
-                        className="text-blue-600 hover:underline"
-                      >
-                        +1 (555) 123-4569
                       </a>
                     </p>
                   </div>
@@ -106,26 +109,18 @@ const Contact = () => {
                     <p className="text-gray-600">
                       General:{" "}
                       <a
-                        href="mailto:info@stmarysintl.edu"
+                        href="mailto:amaravathigrammar1982@gmail.com"
                         className="text-blue-600 hover:underline"
                       >
-                        info@stmarysintl.edu
+                        amaravathigrammar1982@gmail.com
                       </a>
                       <br />
                       Admissions:{" "}
                       <a
-                        href="mailto:admissions@stmarysintl.edu"
+                        href="mailto:amaravathimodelwing99@gmail.com"
                         className="text-blue-600 hover:underline"
                       >
-                        admissions@stmarysintl.edu
-                      </a>
-                      <br />
-                      Principal:{" "}
-                      <a
-                        href="mailto:principal@stmarysintl.edu"
-                        className="text-blue-600 hover:underline"
-                      >
-                        principal@stmarysintl.edu
+                        amaravathimodelwing99@gmail.com
                       </a>
                     </p>
                   </div>
@@ -140,9 +135,7 @@ const Contact = () => {
                       Office Hours
                     </h3>
                     <p className="text-gray-600">
-                      Monday - Friday: 8:00 AM - 5:00 PM
-                      <br />
-                      Saturday: 9:00 AM - 2:00 PM
+                      Monday - Saturday: 8:00 AM - 5:00 PM
                       <br />
                       Sunday: Closed
                     </p>
@@ -222,17 +215,12 @@ const Contact = () => {
               {
                 question: "What are the admission requirements?",
                 answer:
-                  "Admission requirements vary by grade level. Generally, we require completed application forms, academic transcripts, recommendation letters, and an entrance assessment. Please contact our admissions office for specific requirements.",
+                  "Admission requirements vary by grade level. Generally, we require completed application forms, academic transcripts, and an entrance assessment. Please contact our admissions office for specific requirements.",
               },
               {
                 question: "What is the school calendar?",
                 answer:
-                  "Our academic year runs from August to June, with breaks for holidays and summer vacation. The detailed calendar is available on our website and sent to all families at the beginning of each academic year.",
-              },
-              {
-                question: "Do you offer transportation services?",
-                answer:
-                  "Yes, we provide safe and reliable bus transportation services covering various routes throughout the city. Transportation fees are separate from tuition fees.",
+                  "Our academic year runs from June to April, with breaks for holidays and summer vacation.",
               },
               {
                 question: "What extracurricular activities are available?",
@@ -243,7 +231,7 @@ const Contact = () => {
                 question:
                   "How can parents stay updated with school activities?",
                 answer:
-                  "Parents can stay updated through our school website, parent portal, monthly newsletters, SMS alerts, and our official social media channels.",
+                  "Parents can stay updated through our school website, and our official social media channels.",
               },
             ].map((faq, index) => (
               <div key={index} className="bg-gray-50 rounded-lg p-6">
