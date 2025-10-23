@@ -18,13 +18,7 @@ const app = express();
 const path = require("path");
 
 
-// Serve the built frontend
 app.use(express.static(path.join(__dirname, "../FRONTEND/dist")));
-
-// Handle any unknown routes by serving index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../FRONTEND/dist/index.html"));
-});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -96,7 +90,11 @@ app.post('/logout', (req, res) => {
   });
 });
 
-app.all("{*splat}", (req, res, next) => {
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../FRONTEND/dist/index.html"));
+});
+
+app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page not found!"))
 })
 
