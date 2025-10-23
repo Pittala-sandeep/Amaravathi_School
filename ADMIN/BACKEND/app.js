@@ -19,10 +19,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: [process.env.FRONTEND_ORIGIN, process.env.ADMIN_FRONTEND_ORIGIN],
+  origin: [process.env.FRONTEND_ORIGIN, process.env.ADMIN_FRONTEND_ORIGIN || ""].filter(Boolean),
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
+
 
 app.set("trust proxy", 1);
 
