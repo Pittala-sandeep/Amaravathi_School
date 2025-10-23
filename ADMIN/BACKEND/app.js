@@ -13,12 +13,7 @@ const gallery = require('./routes/gallery');
 const notice = require('./routes/notice');
 
 const app = express();
-
-
 const path = require("path");
-
-
-app.use(express.static(path.join(__dirname, "../FRONTEND/dist")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -89,6 +84,8 @@ app.post('/logout', (req, res) => {
     res.send({ success: true });
   });
 });
+
+app.use(express.static(path.join(__dirname, "../FRONTEND/dist")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../FRONTEND/dist/index.html"));
