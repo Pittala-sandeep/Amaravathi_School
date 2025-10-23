@@ -17,7 +17,6 @@ const app = express();
 
 const path = require("path");
 
-const __dirname = path.dirname(__filename);
 
 // Serve the built frontend
 app.use(express.static(path.join(__dirname, "../FRONTEND/dist")));
