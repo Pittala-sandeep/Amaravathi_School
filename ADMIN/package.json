@@ -1,14 +1,15 @@
 {
   "scripts": {
-    "start": "cd BACKEND && npm install && node app.js",
-    "build": "cd FRONTEND && npm install && npm run build"
+    "install": "cd BACKEND && npm install && cd ../FRONTEND && npm install",
+    "build": "cd FRONTEND && npm run build",
+    "start": "cd BACKEND && node app.js"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "nodemon": "^3.1.10",
-    "vite": "^7.1.12",
-    "dotenv": "^16.4.5"
+    "vite": "^7.1.12"
   }
 }
