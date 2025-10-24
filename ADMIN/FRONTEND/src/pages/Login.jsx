@@ -9,6 +9,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const { setUser, setIsAuthenticated } = useAuth(); // from AuthContext
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
   const handleLogin = async (e) => {
     e.preventDefault();
