@@ -8,10 +8,12 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
+
 
   const checkAuth = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/isauth", {
+      const res = await axios.get(`${ADMIN_ORIGIN}/isauth`, {
         withCredentials: true,
       });
       if (res.data.isAuthenticated) {
@@ -35,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const logout = async () => {
-    await axios.post("http://localhost:5000/logout", {}, { withCredentials: true });
+    await axios.post(`${ADMIN_ORIGIN}/logout`, {}, { withCredentials: true });
     setIsAuthenticated(false);
     setUser(null);
   };

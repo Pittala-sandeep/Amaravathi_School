@@ -14,7 +14,7 @@ const NoticeUpload = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
     // Handle input changes
   const handleChange = (e) => {
@@ -32,7 +32,7 @@ const NoticeUpload = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/notice", 
+        `${ADMIN_ORIGIN}/notice`, 
         formData,
         { withCredentials: true }
       );
@@ -50,7 +50,7 @@ const NoticeUpload = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/notice")
+      .get(`${ADMIN_ORIGIN}/notice`)
       .then((res) => {
         setData(res.data);
       })

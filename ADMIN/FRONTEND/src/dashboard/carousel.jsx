@@ -9,6 +9,7 @@ const CarouselUpload = () => {
   const [message, setMessage] = useState("");
   const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
@@ -26,7 +27,7 @@ const CarouselUpload = () => {
     setMessage("");
 
     try {
-      await axios.post("http://localhost:5000/carousel", formData, {
+      await axios.post(`${ADMIN_ORIGIN}/carousel`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });
@@ -44,7 +45,7 @@ const CarouselUpload = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/carousel")
+      .get(`${ADMIN_ORIGIN}/carousel`)
       .then((res) => {
         setData(res.data);
       })

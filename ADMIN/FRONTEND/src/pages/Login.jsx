@@ -17,13 +17,13 @@ const Login = () => {
     try {
       // 1. Login request
       await axios.post(
-        'http://localhost:5000/login',
+        `${ADMIN_ORIGIN}/login`,
         { username, password },
         { withCredentials: true }
       );
 
       // 2. Fetch user from session
-      const res = await axios.get('http://localhost:5000/isauth', {
+      const res = await axios.get(`${ADMIN_ORIGIN}/isauth`, {
         withCredentials: true,
       });
 

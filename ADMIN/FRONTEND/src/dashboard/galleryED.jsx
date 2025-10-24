@@ -7,6 +7,7 @@ import "react-tooltip/dist/react-tooltip.css";
 
 export const GalleryEditDelete = ({ item, setData }) => {
     const navigate = useNavigate();
+    const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
     
     const handleEdit = async (id) => {
         const selectedItem = item
@@ -15,7 +16,7 @@ export const GalleryEditDelete = ({ item, setData }) => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:5000/gallery/${id}`, {
+            const res = await axios.delete(`${ADMIN_ORIGIN}/gallery/${id}`, {
             withCredentials: true, 
             });
             setData((prevData) => prevData.filter((item) => item._id !== id));

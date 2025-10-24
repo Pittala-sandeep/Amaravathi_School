@@ -9,6 +9,7 @@ const NoticeEdit = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
     // Handle input changes
   const handleChange = (e) => {
@@ -32,7 +33,7 @@ const NoticeEdit = () => {
 
     try {
       await axios.put(
-        `http://localhost:5000/notice/edit/${formData._id}`, 
+        `${ADMIN_ORIGIN}/notice/edit/${formData._id}`, 
         updatePayload,
         { withCredentials: true }
       );

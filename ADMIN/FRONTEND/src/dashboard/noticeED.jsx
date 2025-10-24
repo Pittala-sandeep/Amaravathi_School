@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export const NoticeEditDelete = ({ notice, setData }) => {
   const navigate = useNavigate();
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
   const handleEdit = async (id) => {
     const selectedNotice = notice
@@ -16,7 +17,7 @@ export const NoticeEditDelete = ({ notice, setData }) => {
 
   const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:5000/notice/delete/${id}`, {
+            const res = await axios.delete(`${ADMIN_ORIGIN}/notice/delete/${id}`, {
             withCredentials: true, 
             });
             setData((prevData) => prevData.filter((item) => item._id !== id));

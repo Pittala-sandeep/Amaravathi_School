@@ -10,6 +10,7 @@ const GalleryEdit = () => {
   const [uploading, setUploading] = useState(false);
   const [previewUrls, setPreviewUrls] = useState([]);
   const navigate = useNavigate();
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,7 +47,7 @@ const GalleryEdit = () => {
     setUploading(true)
 
     try {
-      const res = await axios.put(`http://localhost:5000/gallery/edit/${formData._id}`, data, {
+      const res = await axios.put(`${ADMIN_ORIGIN}/gallery/edit/${formData._id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },

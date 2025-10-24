@@ -8,7 +8,7 @@ export const CarouselEditDelete = ({ item, setData }) => {
 
     const handleDelete = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:5000/carousel/${id}`, {
+            const res = await axios.delete(`${ADMIN_ORIGIN}/carousel/${id}`, {
             withCredentials: true, 
             });
             setData((prevData) => prevData.filter((item) => item._id !== id));

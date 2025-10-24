@@ -15,6 +15,7 @@ const GalleryUpload = () => {
   const [data, setData] = useState([]);
   const [previewUrls, setPreviewUrls] = useState([]);
   const navigate = useNavigate();
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -51,7 +52,7 @@ const GalleryUpload = () => {
     setUploading(true)
 
     try {
-      const res = await axios.post('http://localhost:5000/gallery', data, {
+      const res = await axios.post(`${ADMIN_ORIGIN}/gallery`, data, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -70,7 +71,7 @@ const GalleryUpload = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/gallery")
+      .get(`${ADMIN_ORIGIN}/gallery`)
       .then((res) => {
         setData(res.data);
       })
