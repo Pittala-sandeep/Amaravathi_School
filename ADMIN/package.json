@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node BACKEND/app.js",
+    "start": "cd BACKEND && npm install && node app.js",
     "build": "cd FRONTEND && npm install && npm run build"
   },
   "devDependencies": {
@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "nodemon": "^3.1.10",
-    "vite": "^7.1.12"
+    "vite": "^7.1.12",
+    "dotenv": "^16.4.5"
   }
 }
