@@ -1,4 +1,4 @@
-require("dotenv").config({path:"../.env"})
+require("dotenv").config()
 const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -23,7 +23,6 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 }));
-
 
 app.set("trust proxy", 1);
 
@@ -88,11 +87,11 @@ app.post('/logout', (req, res) => {
 
 app.use(express.static(path.join(__dirname, "../FRONTEND/dist")));
 
-app.get("*", (req, res) => {
+app.get("{*splat}", (req, res) => {
   res.sendFile(path.join(__dirname, "../FRONTEND/dist/index.html"));
 });
 
-app.all("*", (req, res, next) => {
+app.all("{*splat}", (req, res, next) => {
   next(new ExpressError(404, "Page not found!"))
 })
 
