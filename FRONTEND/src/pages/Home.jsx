@@ -14,10 +14,11 @@ import Whatsapp from "../components/whatapp";
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [data, setData] = useState([]);
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/carousel")
+      .get(`${ADMIN_ORIGIN}/carousel`)
       .then((res) => {
         setData(res.data);
       })
