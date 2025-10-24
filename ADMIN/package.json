@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "build": "cd FRONTEND && npm install && npm run build",
-    "start": "cd BACKEND && npm install && node app.js"
+    "start": "node BACKEND/app.js",
+    "build": "cd FRONTEND && npm install && npm run build"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
