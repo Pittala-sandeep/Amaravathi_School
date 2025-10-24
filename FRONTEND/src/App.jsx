@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { AuthProvider } from "./contexts/AuthContext";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -17,7 +16,6 @@ import Notices from "./pages/Notices";
 
 function App() {
   return (
-    <AuthProvider>
       <Router>
         <div className="min-h-screen bg-gray-50">
           <Navbar />
@@ -44,7 +42,6 @@ function App() {
           />
         </div>
       </Router>
-    </AuthProvider>
   );
 }
 

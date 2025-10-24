@@ -14,10 +14,11 @@ const Gallery = () => {
   const [filterCategory, setFilterCategory] = useState("all");
   const [selectedImage, setSelectedImage] = useState(null);
   const [galleryItems, setGalleryItems] = useState([]);
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/gallery")
+      .get(`${ADMIN_ORIGIN}/gallery`)
       .then((res) => {
         setGalleryItems(res.data);
       })

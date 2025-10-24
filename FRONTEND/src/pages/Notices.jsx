@@ -4,9 +4,10 @@ import { FaCalendarAlt, FaUserAlt, FaEye } from "react-icons/fa";
 
 const Notices = () => {
   const [notices, setNotices] = useState([]);
+  const ADMIN_ORIGIN = import.meta.env.VITE_ADMIN_ORIGIN;
 
   useEffect(() => {
-    axios.get("http://localhost:5000/notice")
+    axios.get(`${ADMIN_ORIGIN}/notice`)
       .then((res) => setNotices(res.data))
       .catch((err) => console.error("Error fetching notices", err));
   }, []);
